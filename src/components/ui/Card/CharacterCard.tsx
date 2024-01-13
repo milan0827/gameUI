@@ -1,29 +1,27 @@
 import CardHeader from "./CardHeader";
 import Character from "./../../../assets/images/character.png";
-import Button from "../Button/ArrowButton";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
+import ArrowButton from "../Button/ArrowButton";
 
-type Props = {};
-
-const CharacterCard = (props: Props) => {
+const CharacterCard = () => {
   return (
-    <div className="flex col-character-col flex-col items-center justify-between  bg-gray-1/40 p-12 ml-8 mb-8 rounded-[40px] backdrop-blur-[8px] ">
+    <div className="col-character-col mb-8 ml-8 flex flex-col  items-center justify-between rounded-[40px] bg-gray-1/40 p-12 backdrop-blur-[8px] ">
       <CardHeader title="Select Character Class" />
       <img
         src={Character}
         alt="Character Image"
-        className="drop-shadow-character w-[8rem]"
+        className="w-[8rem] cursor-pointer drop-shadow-character transition-all duration-300 hover:scale-[1.2]"
       />
-      <div className="flex items-center justify-between w-full">
-        <Button btnName={<FaArrowLeft />} />
-        <p className="text-2xl font-semibold text-gray-1/80 font-sans">
+      <div className="flex w-full items-center justify-between">
+        <ArrowButton btnName={<FaArrowLeft />} />
+        <p className="font-sans text-2xl font-semibold text-gray-1/80">
           Warrior
         </p>
-        <Button btnName={<FaArrowRight />} />
+        <ArrowButton btnName={<FaArrowRight />} />
       </div>
 
-      <button className="py-3 w-full border-[3.5px] border-gray-2/30 rounded-md text-xl text-gray-1/80">
+      <button className="relative w-full overflow-hidden rounded-md border-[3.5px] border-gray-2/50 py-3 text-xl text-gray-1/80 transition-all duration-300 before:left-0 before:top-0 before:h-14 before:w-0 before:transition-all before:duration-500 hover:scale-[1.1] hover:text-gray-2 hover:shadow-lg hover:shadow-black/50 hover:before:absolute hover:before:w-full hover:before:bg-gray-1/40 hover:before:content-['']">
         Confirm
       </button>
     </div>
