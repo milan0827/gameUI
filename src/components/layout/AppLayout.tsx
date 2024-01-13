@@ -4,7 +4,7 @@ import Header from "../ui/Header/Header";
 
 const AppLayout = () => {
   return (
-    <main className="bg-bg-image grid grid-rows-content gap-8 grid-cols-content w-full h-screen bg-center bg-cover font-Exo">
+    <main className="grid h-screen w-full grid-cols-content grid-rows-content gap-8 bg-bg-image bg-cover bg-center font-Exo text-gray-2/80">
       <Header />
       <CharacterCard />
       <SpecCard />
