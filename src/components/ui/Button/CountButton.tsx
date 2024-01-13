@@ -4,7 +4,7 @@ type Props = {
 
 const CountButton = ({ btnName }: Props) => {
   return (
-    <button className="bg-gray-1/60 text-black/30 w-6 h-6 text-xl rounded-full">
+    <button className="h-6 w-6 rounded-full bg-gray-1/60 text-xl text-black/30 transition-all duration-300 hover:scale-[1.1] hover:bg-gray-1 hover:text-black/60 hover:shadow-sm hover:shadow-black/50">
       {btnName}
     </button>
   );
