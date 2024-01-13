@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from "tailwindcss/plugin";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      textShadow: {
+        shadowText: "0 3px 5px rgba(0,0,0,0.3)",
+      },
+
       backgroundImage: {
         "bg-image": "url(./src/assets/images/bg-image.jpeg)",
         "bluish-white": "linear-gradient(270deg,#1746A2 0%,#2D6AE1 100%)",
@@ -30,7 +35,7 @@ export default {
       },
 
       dropShadow: {
-        character: "10px -2px 4px rgba(0,0,0,0.6)",
+        character: "8px -2px 4px rgba(0,0,0,0.4)",
       },
 
       colors: {
@@ -42,5 +47,16 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "text-shadow": (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme("textShadow") },
+      );
+    }),
+  ],
 };
