@@ -1,3 +1,5 @@
+import { useGameStore } from "../../../store/store";
+
 type PointsType = {
   content: string;
   point: number;
@@ -5,9 +7,9 @@ type PointsType = {
 
 function PointsContent({ content, point }: PointsType) {
   return (
-    <div className="flex w-full flex-col items-center gap-1 text-4xl text-gray-2/50">
-      <h2 className="text-2xl ">{content}</h2>
-      <p>{point}</p>
+    <div className="flex w-full font-semibold flex-col items-center gap-1 text-gray-2/50">
+      <h2 className="text-[1.7rem] w-full text-center ">{content}</h2>
+      <p className="text-4xl"> {point}</p>
     </div>
   );
 }

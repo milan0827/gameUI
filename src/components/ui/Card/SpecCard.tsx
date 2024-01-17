@@ -4,86 +4,37 @@ import Points from "../CharacterStats/Points";
 import ArrowButton from "../Button/ArrowButton";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Image1 from "./../../../assets/images/weapon-image.png";
+import { CHARACTER_STAT_OPTION, SKILL } from "../../../data";
+import { SkillType } from "../../../Shared/type";
+import { useState } from "react";
+import { useGameStore } from "../../../store/store";
 
-type CharacterStatOptionType = {
-  skillLabel: string;
-  skillPoints: number;
+type SkillsType = {
+  skills: SkillType;
 };
 
-type SkillType = {
-  id: number;
-  skill: string;
-};
-
-const CHARACTER_STAT_OPTION: CharacterStatOptionType[] = [
-  { skillLabel: "strength", skillPoints: 40 },
-  { skillLabel: "Agility", skillPoints: 40 },
-  { skillLabel: "Magic", skillPoints: 40 },
-  { skillLabel: "Vitality", skillPoints: 40 },
-  { skillLabel: "Luck", skillPoints: 40 },
-];
-
-const SKILL: SkillType[] = [
-  {
-    id: 1,
-    skill: "Whirland Slash",
-  },
-  {
-    id: 2,
-    skill: "Sword Mastery",
-  },
-  {
-    id: 3,
-    skill: "Battle Tactics",
-  },
-  {
-    id: 4,
-    skill: "Brutal Strike",
-  },
-  {
-    id: 3,
-    skill: "Shield Rush",
-  },
-  {
-    id: 3,
-    skill: "War Cry",
-  },
-  {
-    id: 3,
-    skill: "Repel Counter",
-  },
-  {
-    id: 3,
-    skill: "Armor Proficincy",
-  },
-  {
-    id: 3,
-    skill: "Triple Slash",
-  },
-  {
-    id: 3,
-    skill: "Whirland Slash",
-  },
-  {
-    id: 3,
-    skill: "Blade Rush",
-  },
-  {
-    id: 3,
-    skill: "Berserker Rush",
-  },
-];
+function SkillItem({ skills }: SkillsType) {
+  return (
+    <li className="flex w-[12rem] items-center justify-start gap-4 text-center">
+      <input type="radio" />
+      <label>{skills.skill}</label>
+    </li>
+  );
+}
 
 const SpecCard = () => {
+  const gameSkill = useGameStore((state) => state.gameSkill);
+  console.log(gameSkill);
+
   return (
     <div className="relative col-spec-col mb-8 mr-8 rounded-[40px] bg-gray-1/40 p-10 backdrop-blur-[8px]">
       <CardHeader title="Character Stats" />
-      <div className="mt-6 flex items-center justify-center gap-8">
+      <div className="flex items-center justify-between gap-4">
         <ul className="flex flex-col items-center justify-center">
-          {CHARACTER_STAT_OPTION.map((skill) => (
+          {gameSkill.map((skill) => (
             <CharacterStats
               skillLabel={skill.skillLabel}
-              skillPoints={skill.skillPoints}
+              key={skill.skillLabel}
             />
           ))}
         </ul>
@@ -97,11 +48,8 @@ const SpecCard = () => {
             <p className="text-[0.8rem]">(Select 6 skills)</p>
           </div>
           <ul className="mt-6 flex w-[30rem] flex-wrap items-center gap-2 px-4 text-lg">
-            {SKILL.map((skill) => (
-              <li className="flex w-[12rem] items-center justify-start gap-4 text-center">
-                <input type="radio" />
-                <label>{skill.skill}</label>
-              </li>
+            {SKILL.map((skills: SkillType) => (
+              <SkillItem skills={skills} />
             ))}
           </ul>
         </div>
@@ -117,7 +65,7 @@ const SpecCard = () => {
 
             <ArrowButton btnName={<FaArrowRight />} />
           </div>
-          <p className=" text-shadow-shadowText text-2xl font-semibold drop-shadow-2xl">
+          <p className=" text-2xl font-semibold drop-shadow-2xl text-shadow-shadowText">
             Azure Dragon Slayer
           </p>
         </div>
